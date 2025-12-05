@@ -450,6 +450,34 @@
             background: #8f6e6e;
         }
 
+        .gallery-controls {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            display: flex;
+            gap: 8px;
+            z-index: 2;
+        }
+
+        .gallery-toggle {
+            background: rgba(0,0,0,0.55);
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 20px;
+            padding: 0.45rem 0.9rem;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+        }
+
+        .gallery-toggle:hover {
+            background: rgba(0,0,0,0.7);
+        }
+
+        .gallery-toggle:active {
+            transform: scale(0.98);
+        }
+
         /* Contact Section */
         .contact {
             background: #fff;
@@ -871,6 +899,9 @@
             <div class="slide">
                 <img src="7.PNG" alt="Gallery photo 7">
 </div>
+            <div class="gallery-controls">
+                <button class="gallery-toggle" id="galleryToggle" aria-label="Pause slideshow">Pause</button>
+            </div>
             <div class="gallery-dots" role="tablist" aria-label="Slideshow controls">
                 <button class="gallery-dot active" aria-label="Go to slide 1"></button>
                 <button class="gallery-dot" aria-label="Go to slide 2"></button>
@@ -1023,9 +1054,11 @@
         // Gallery slideshow autoplay
         const slides = document.querySelectorAll('.gallery-slider .slide');
         const dots = document.querySelectorAll('.gallery-dot');
+        const toggleBtn = document.getElementById('galleryToggle');
         let currentSlide = 0;
         const totalSlides = slides.length;
         let slideTimer;
+        let isPaused = false;
 
         function showSlide(index) {
             slides.forEach((slide, i) => {
@@ -1043,7 +1076,9 @@
         }
 
         function startSlideshow() {
-            slideTimer = setInterval(nextSlide, 3500);
+            if (!isPaused) {
+                slideTimer = setInterval(nextSlide, 3500);
+            }
         }
 
         function resetSlideshow() {
@@ -1054,8 +1089,23 @@
         dots.forEach((dot, index) => {
             dot.addEventListener('click', () => {
                 showSlide(index);
-                resetSlideshow();
+                if (!isPaused) {
+                    resetSlideshow();
+                }
             });
+        });
+
+        toggleBtn.addEventListener('click', () => {
+            isPaused = !isPaused;
+            if (isPaused) {
+                clearInterval(slideTimer);
+                toggleBtn.textContent = 'Play';
+                toggleBtn.setAttribute('aria-label', 'Play slideshow');
+            } else {
+                toggleBtn.textContent = 'Pause';
+                toggleBtn.setAttribute('aria-label', 'Pause slideshow');
+                resetSlideshow();
+            }
         });
 
         showSlide(0);
