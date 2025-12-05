@@ -393,29 +393,59 @@
             background: #f9f9f9;
         }
 
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 1.2rem;
-            margin-top: 2.2rem;
-        }
-
-        .gallery-item {
+        .gallery-slider {
             position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            border-radius: 8px;
             overflow: hidden;
-            border-radius: 6px;
-            aspect-ratio: 1;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
         }
 
-        .gallery-item img {
+        .slide {
+            display: none;
+            width: 100%;
+            height: 100%;
+        }
+
+        .slide.active {
+            display: block;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .slide img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.3s;
+            display: block;
         }
 
-        .gallery-item:hover img {
-            transform: scale(1.05);
+        .gallery-dots {
+            position: absolute;
+            bottom: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+        }
+
+        .gallery-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.6);
+            border: 1px solid rgba(0,0,0,0.2);
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .gallery-dot.active {
+            background: #8f6e6e;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         /* Contact Section */
@@ -817,18 +847,36 @@
     <!-- Gallery Section -->
     <section id="gallery" class="gallery">
         <h2 class="section-title">Photo Gallery</h2>
-        <div class="gallery-grid">
-            <div class="gallery-item">
-                <img src="//img1.wsimg.com/isteam/stock/3395/:/cr=t:11.02%25,l:0%25,w:100%25,h:77.95%25/rs=w:600,h:600,cg:true" alt="Gallery Image 1">
+        <div class="gallery-slider" aria-label="Property photos slideshow">
+            <div class="slide active">
+                <img src="1.PNG" alt="Gallery photo 1">
             </div>
-            <div class="gallery-item">
-                <img src="//img1.wsimg.com/isteam/stock/107927/:/rs=w:600,h:600,cg:true,m/cr=w:600,h:600" alt="Gallery Image 2">
+            <div class="slide">
+                <img src="2.PNG" alt="Gallery photo 2">
             </div>
-            <div class="gallery-item">
-                <img src="//img1.wsimg.com/isteam/stock/771/:/cr=t:5.36%25,l:1.76%25,w:96.47%25,h:89.29%25/rs=w:600,h:600,cg:true,m" alt="Gallery Image 3">
+            <div class="slide">
+                <img src="3.PNG" alt="Gallery photo 3">
             </div>
-            <div class="gallery-item">
-                <img src="//img1.wsimg.com/isteam/ip/067a4d42-19e8-46d9-9bed-578bf62dd44e/photo-5db79f9.jpg/:/rs=w:600,h:600,cg:true" alt="Gallery Image 4">
+            <div class="slide">
+                <img src="4.PNG" alt="Gallery photo 4">
+            </div>
+            <div class="slide">
+                <img src="5.PNG" alt="Gallery photo 5">
+            </div>
+            <div class="slide">
+                <img src="6.PNG" alt="Gallery photo 6">
+            </div>
+            <div class="slide">
+                <img src="7.PNG" alt="Gallery photo 7">
+            </div>
+            <div class="gallery-dots" role="tablist" aria-label="Slideshow controls">
+                <button class="gallery-dot active" aria-label="Go to slide 1"></button>
+                <button class="gallery-dot" aria-label="Go to slide 2"></button>
+                <button class="gallery-dot" aria-label="Go to slide 3"></button>
+                <button class="gallery-dot" aria-label="Go to slide 4"></button>
+                <button class="gallery-dot" aria-label="Go to slide 5"></button>
+                <button class="gallery-dot" aria-label="Go to slide 6"></button>
+                <button class="gallery-dot" aria-label="Go to slide 7"></button>
             </div>
         </div>
     </section>
@@ -969,6 +1017,47 @@
             alert('Thank you for your message! We will get back to you soon.');
             e.target.reset();
         });
+
+        // Gallery slideshow autoplay
+        const slides = document.querySelectorAll('.gallery-slider .slide');
+        const dots = document.querySelectorAll('.gallery-dot');
+        let currentSlide = 0;
+        const totalSlides = slides.length;
+        let slideTimer;
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
+            });
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+            currentSlide = index;
+        }
+
+        function nextSlide() {
+            const next = (currentSlide + 1) % totalSlides;
+            showSlide(next);
+        }
+
+        function startSlideshow() {
+            slideTimer = setInterval(nextSlide, 3500);
+        }
+
+        function resetSlideshow() {
+            clearInterval(slideTimer);
+            startSlideshow();
+        }
+
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                showSlide(index);
+                resetSlideshow();
+            });
+        });
+
+        showSlide(0);
+        startSlideshow();
     </script>
 
     <!-- Schema.org structured data -->
