@@ -20,47 +20,22 @@
             box-sizing: border-box;
         }
 
-        :root {
-            --primary-color: #8f6e6e;
-            --secondary-color: #161616;
-            --accent-color: #d4a5a5;
-            --text-dark: #1b1b1b;
-            --text-light: #ffffff;
-            --bg-light: #f6f6f6;
-            --bg-dark: #000000;
-            --spacing: 2rem;
-            --transition: all 0.3s ease;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
             font-family: 'Source Sans Pro', Arial, sans-serif;
             font-size: 16px;
             line-height: 1.6;
-            color: var(--text-dark);
+            color: #333;
             background-color: #ffffff;
-            overflow-x: hidden;
         }
 
         /* Navigation */
         nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
+            background: #1a1a1a;
             padding: 1rem 0;
-            transition: var(--transition);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        nav.scrolled {
-            background: rgba(0, 0, 0, 0.98);
-            padding: 0.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
         .nav-container {
@@ -74,8 +49,8 @@
 
         .logo {
             font-family: 'Cinzel', serif;
-            font-size: 1.5rem;
-            color: var(--text-light);
+            font-size: 1.3rem;
+            color: #fff;
             text-decoration: none;
             font-weight: 600;
         }
@@ -87,176 +62,171 @@
         }
 
         .nav-links a {
-            color: var(--text-light);
+            color: #fff;
             text-decoration: none;
             font-weight: 400;
-            transition: var(--transition);
-            position: relative;
+            transition: color 0.3s;
         }
 
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent-color);
-            transition: var(--transition);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
+        .nav-links a:hover {
+            color: #d4a5a5;
         }
 
         .mobile-menu-btn {
             display: none;
             background: none;
             border: none;
-            color: var(--text-light);
+            color: #fff;
             font-size: 1.5rem;
             cursor: pointer;
         }
 
         /* Hero Section */
         .hero {
-            min-height: 100vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
-                        url('//img1.wsimg.com/isteam/ip/067a4d42-19e8-46d9-9bed-578bf62dd44e/mtn%20falls%20pond.jpg') center/cover;
+            background: #000;
+            color: #fff;
+            text-align: center;
+            padding: 8rem 2rem 4rem;
+            position: relative;
+            min-height: 70vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
-            color: var(--text-light);
-            position: relative;
-            padding-top: 80px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('//img1.wsimg.com/isteam/ip/067a4d42-19e8-46d9-9bed-578bf62dd44e/mtn%20falls%20pond.jpg') center/cover;
+            opacity: 0.4;
+            z-index: 0;
         }
 
         .hero-content {
+            position: relative;
+            z-index: 1;
             max-width: 800px;
-            padding: 2rem;
-            animation: fadeInUp 1s ease;
         }
 
         .hero h1 {
             font-family: 'Cinzel', serif;
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
         }
 
         .hero .subtitle {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             margin-bottom: 2rem;
             font-weight: 300;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
         }
 
         .cta-button {
             display: inline-block;
-            padding: 1rem 2.5rem;
-            background: var(--primary-color);
-            color: var(--text-light);
+            padding: 0.9rem 2rem;
+            background: #8f6e6e;
+            color: #fff;
             text-decoration: none;
-            border-radius: 50px;
+            border-radius: 5px;
             font-weight: 600;
-            transition: var(--transition);
+            transition: background 0.3s;
             text-transform: uppercase;
             letter-spacing: 1px;
+            font-size: 0.9rem;
         }
 
         .cta-button:hover {
-            background: var(--accent-color);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(143, 110, 110, 0.4);
+            background: #a08080;
         }
 
         /* Section Styles */
         section {
-            padding: 5rem 2rem;
+            padding: 4rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
         }
 
         .section-title {
             font-family: 'Cinzel', serif;
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             text-align: center;
             margin-bottom: 3rem;
-            color: var(--secondary-color);
-            position: relative;
-            padding-bottom: 1rem;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: var(--primary-color);
+            color: #1a1a1a;
+            font-weight: 600;
         }
 
         /* About Section */
         .about {
-            background: var(--bg-light);
+            background: #f9f9f9;
         }
 
-        .about-grid {
+        .about-main {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
+            grid-template-columns: 400px 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-bottom: 4rem;
+            background: #fff;
+            padding: 3rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
-        .about-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-            transition: var(--transition);
+        .about-photo {
             text-align: center;
         }
 
-        .about-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        .about-card img {
+        .about-photo img {
             width: 100%;
-            height: 300px;
-            object-fit: cover;
-            border-radius: 10px;
-            margin-bottom: 1.5rem;
+            max-width: 400px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
-        .about-card h3 {
+        .about-text h3 {
             font-family: 'Cinzel', serif;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             margin-bottom: 1rem;
-            color: var(--secondary-color);
+            color: #1a1a1a;
         }
 
-        .about-card p {
-            color: #666;
+        .about-text p {
+            font-size: 1.1rem;
             line-height: 1.8;
+            color: #555;
+            margin-bottom: 1rem;
+        }
+
+        .about-text .phone {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #8f6e6e;
+            margin-top: 1.5rem;
+        }
+
+        .about-text .phone a {
+            color: #8f6e6e;
+            text-decoration: none;
         }
 
         /* Stats Section */
         .stats {
-            background: var(--secondary-color);
-            color: var(--text-light);
+            background: #1a1a1a;
+            color: #fff;
             text-align: center;
         }
 
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
-            margin-top: 3rem;
+            margin-top: 2rem;
         }
 
         .stat-item {
@@ -264,85 +234,81 @@
         }
 
         .stat-number {
-            font-size: 3rem;
+            font-size: 2.5rem;
             font-weight: 700;
-            color: var(--accent-color);
+            color: #d4a5a5;
             display: block;
             margin-bottom: 0.5rem;
         }
 
         .stat-label {
-            font-size: 1.1rem;
+            font-size: 1rem;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
-        /* Services Section */
-        .services-grid {
+        /* Services/Features Grid */
+        .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
             margin-top: 3rem;
         }
 
-        .service-card {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-            transition: var(--transition);
-        }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        .service-card img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-        }
-
-        .service-content {
+        .feature-card {
+            background: #fff;
             padding: 2rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            text-align: center;
         }
 
-        .service-content h3 {
+        .feature-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-card h3 {
             font-family: 'Cinzel', serif;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             margin-bottom: 1rem;
-            color: var(--secondary-color);
+            color: #1a1a1a;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.7;
         }
 
         /* MLS Search Section */
         .mls-search {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
-                        url('//img1.wsimg.com/isteam/stock/107927/:/rs=w:1200,h:600,cg:true,m') center/cover;
-            color: var(--text-light);
-            padding: 5rem 2rem;
-        }
-
-        .mls-search .section-title {
-            color: var(--text-light);
-        }
-
-        .mls-search .section-title::after {
-            background: var(--accent-color);
+            background: #f9f9f9;
+            padding: 4rem 2rem;
         }
 
         .search-form {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 2rem;
-            border-radius: 10px;
-            max-width: 800px;
+            background: #fff;
+            padding: 2.5rem;
+            border-radius: 5px;
+            max-width: 900px;
             margin: 0 auto;
-            color: var(--text-dark);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .search-form h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            color: #1a1a1a;
         }
 
         .form-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 1rem;
             margin-bottom: 1.5rem;
         }
@@ -355,78 +321,49 @@
         .form-group label {
             margin-bottom: 0.5rem;
             font-weight: 600;
-            color: var(--text-dark);
+            color: #333;
+            font-size: 0.9rem;
         }
 
         .form-group input,
         .form-group select {
-            padding: 0.75rem;
-            border: 2px solid #ddd;
-            border-radius: 5px;
+            padding: 0.7rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
             font-size: 1rem;
-            transition: var(--transition);
+            font-family: inherit;
         }
 
         .form-group input:focus,
         .form-group select:focus {
             outline: none;
-            border-color: var(--primary-color);
+            border-color: #8f6e6e;
         }
 
         .search-button {
             width: 100%;
             padding: 1rem;
-            background: var(--primary-color);
-            color: var(--text-light);
+            background: #1a1a1a;
+            color: #fff;
             border: none;
-            border-radius: 5px;
-            font-size: 1.1rem;
+            border-radius: 4px;
+            font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
-            transition: var(--transition);
+            transition: background 0.3s;
             text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .search-button:hover {
-            background: var(--accent-color);
-            transform: translateY(-2px);
-        }
-
-        /* Gallery Section */
-        .gallery {
-            background: var(--bg-light);
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-            margin-top: 3rem;
-        }
-
-        .gallery-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 10px;
-            aspect-ratio: 1;
-            cursor: pointer;
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.1);
+            background: #333;
         }
 
         /* Logos Section */
         .logos {
-            background: white;
+            background: #fff;
             padding: 3rem 2rem;
+            text-align: center;
         }
 
         .logos-grid {
@@ -439,88 +376,159 @@
         }
 
         .logo-item img {
-            height: 80px;
+            height: 70px;
             width: auto;
-            opacity: 0.7;
-            transition: var(--transition);
+            opacity: 0.8;
+            transition: opacity 0.3s;
         }
 
         .logo-item img:hover {
             opacity: 1;
-            transform: scale(1.1);
+        }
+
+        /* Gallery Section */
+        .gallery {
+            background: #f9f9f9;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 5px;
+            aspect-ratio: 1;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
         }
 
         /* Contact Section */
         .contact {
-            background: var(--bg-light);
+            background: #fff;
         }
 
         .contact-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: 1fr 1fr;
             gap: 3rem;
-            margin-top: 3rem;
+            margin-top: 2rem;
         }
 
-        .contact-form {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-        }
-
+        .contact-form,
         .contact-info {
-            background: white;
+            background: #f9f9f9;
             padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
         }
 
+        .contact-form h3,
         .contact-info h3 {
             font-family: 'Cinzel', serif;
             font-size: 1.5rem;
             margin-bottom: 1.5rem;
-            color: var(--secondary-color);
+            color: #1a1a1a;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.7rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 0.9rem;
+            background: #1a1a1a;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+            text-transform: uppercase;
+        }
+
+        .submit-button:hover {
+            background: #333;
         }
 
         .contact-info p {
             margin-bottom: 1rem;
-            color: #666;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .contact-info strong {
+            color: #1a1a1a;
         }
 
         .contact-info a {
-            color: var(--primary-color);
+            color: #8f6e6e;
             text-decoration: none;
-            transition: var(--transition);
         }
 
         .contact-info a:hover {
-            color: var(--accent-color);
+            text-decoration: underline;
         }
 
         .whatsapp-btn {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            padding: 0.75rem 1.5rem;
+            padding: 0.7rem 1.5rem;
             background: #25D366;
             color: white;
             text-decoration: none;
-            border-radius: 50px;
+            border-radius: 4px;
             margin-bottom: 1.5rem;
-            transition: var(--transition);
+            transition: background 0.3s;
+            font-weight: 600;
         }
 
         .whatsapp-btn:hover {
             background: #20BA5A;
-            transform: translateY(-2px);
         }
 
         /* Footer */
         footer {
-            background: var(--bg-dark);
-            color: var(--text-light);
-            padding: 3rem 2rem 1rem;
+            background: #1a1a1a;
+            color: #fff;
+            padding: 3rem 2rem 1.5rem;
             text-align: center;
         }
 
@@ -532,59 +540,68 @@
         }
 
         .social-links a {
-            color: var(--text-light);
+            color: #fff;
             font-size: 1.5rem;
-            transition: var(--transition);
+            transition: color 0.3s;
         }
 
         .social-links a:hover {
-            color: var(--accent-color);
-            transform: translateY(-3px);
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
+            color: #d4a5a5;
         }
 
         .footer-bottom {
             margin-top: 2rem;
-            padding-top: 2rem;
+            padding-top: 1.5rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             font-size: 0.9rem;
             color: #999;
         }
 
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .fade-in {
-            animation: fadeInUp 0.8s ease;
-        }
-
         /* Responsive Design */
+        @media (max-width: 968px) {
+            .about-main {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .about-photo {
+                margin: 0 auto;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         @media (max-width: 768px) {
             .nav-links {
                 position: fixed;
-                top: 70px;
+                top: 60px;
                 left: -100%;
                 width: 100%;
-                height: calc(100vh - 70px);
-                background: rgba(0, 0, 0, 0.98);
+                height: calc(100vh - 60px);
+                background: #1a1a1a;
                 flex-direction: column;
                 align-items: center;
                 justify-content: flex-start;
                 padding-top: 2rem;
-                transition: var(--transition);
+                transition: left 0.3s;
             }
 
             .nav-links.active {
@@ -600,7 +617,7 @@
             }
 
             .hero .subtitle {
-                font-size: 1.2rem;
+                font-size: 1rem;
             }
 
             section {
@@ -608,29 +625,23 @@
             }
 
             .section-title {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
 
-            .about-grid,
-            .services-grid,
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .form-grid {
+            .gallery-grid {
                 grid-template-columns: 1fr;
             }
         }
 
-        /* Smooth scroll behavior */
         html {
+            scroll-behavior: smooth;
             scroll-padding-top: 80px;
         }
     </style>
 </head>
 <body>
     <!-- Navigation -->
-    <nav id="navbar">
+    <nav>
         <div class="nav-container">
             <a href="#" class="logo">Marci Metzger</a>
             <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
@@ -657,11 +668,17 @@
     <!-- About Section -->
     <section id="about" class="about">
         <h2 class="section-title">MARCI METZGER</h2>
-        <div class="about-grid">
-            <div class="about-card fade-in">
-                <img src="//img1.wsimg.com/isteam/ip/067a4d42-19e8-46d9-9bed-578bf62dd44e/photo-5db79f9.jpg/:/cr=t:14.65%25,l:0%25,w:100%25,h:66.64%25/rs=w:365,h:365,cg:true" alt="Marci Metzger">
+        <div class="about-main">
+            <div class="about-photo">
+                <img src="//img1.wsimg.com/isteam/ip/067a4d42-19e8-46d9-9bed-578bf62dd44e/photo-5db79f9.jpg/:/rs=w:400,h:500,cg:true" alt="Marci Metzger">
+            </div>
+            <div class="about-text">
                 <h3>REALTOR FOR NEARLY 3 DECADES!</h3>
-                <p><a href="tel:2069196886">206-919-6886</a></p>
+                <p>With over 30 years of experience in real estate, Marci Metzger brings unparalleled expertise and dedication to every transaction. Licensed as a Broker in Seattle and now serving Southern Nevada, she has established herself as Pahrump's top real estate agent.</p>
+                <p>Her commitment to excellence and deep understanding of the market ensures that every client receives personalized service and achieves their real estate goals.</p>
+                <div class="phone">
+                    <a href="tel:2069196886">206-919-6886</a>
+                </div>
             </div>
         </div>
     </section>
@@ -670,12 +687,12 @@
     <section class="stats">
         <div class="stats-grid">
             <div class="stat-item">
-                <span class="stat-number">28.5M</span>
+                <span class="stat-number">$28.5M</span>
                 <span class="stat-label">Sales Closed</span>
             </div>
             <div class="stat-item">
                 <span class="stat-number">90+</span>
-                <span class="stat-label">Happy Clients</span>
+                <span class="stat-label">Happy Clients in 2021</span>
             </div>
             <div class="stat-item">
                 <span class="stat-number">30</span>
@@ -687,19 +704,19 @@
     <!-- Get It Sold Section -->
     <section class="about">
         <h2 class="section-title">GET IT SOLD</h2>
-        <div class="about-grid">
-            <div class="about-card">
-                <img src="//img1.wsimg.com/isteam/stock/3395/:/cr=t:11.02%25,l:0%25,w:100%25,h:77.95%25/rs=w:600,h:300,cg:true" alt="Real Estate Sales">
+        <div class="features-grid">
+            <div class="feature-card">
+                <img src="//img1.wsimg.com/isteam/stock/3395/:/cr=t:11.02%25,l:0%25,w:100%25,h:77.95%25/rs=w:600,h:400,cg:true" alt="Real Estate Sales">
                 <h3>Top Residential Sales Last 5 Years</h3>
                 <p>We helped nearly 90 clients in 2021, and closed 28.5 million in sales! Our team works hard everyday to grow and learn, so that we may continue to excel in our market. Our clients deserve our best, & we want to make sure our best is better every year.</p>
             </div>
-            <div class="about-card">
-                <img src="//img1.wsimg.com/isteam/stock/107927/:/rs=w:600,h:300,cg:true,m/cr=w:600,h:300" alt="Real Estate Services">
+            <div class="feature-card">
+                <img src="//img1.wsimg.com/isteam/stock/107927/:/rs=w:600,h:400,cg:true,m/cr=w:600,h:400" alt="Real Estate Services">
                 <h3>Don't Just List it...</h3>
                 <p>Get it SOLD! We exhaust every avenue to ensure our listings are at the fingertips of every possible buyer, getting you top dollar for your home.</p>
             </div>
-            <div class="about-card">
-                <img src="//img1.wsimg.com/isteam/stock/771/:/cr=t:5.36%25,l:1.76%25,w:96.47%25,h:89.29%25/rs=w:600,h:300,cg:true,m" alt="Buyer Services">
+            <div class="feature-card">
+                <img src="//img1.wsimg.com/isteam/stock/771/:/cr=t:5.36%25,l:1.76%25,w:96.47%25,h:89.29%25/rs=w:600,h:400,cg:true,m" alt="Buyer Services">
                 <h3>Guide to Buyers</h3>
                 <p>Nobody knows the market like we do. Enjoy having a pro at your service. Market analysis, upgrades lists, contractors on speed dial, & more!</p>
             </div>
@@ -710,7 +727,7 @@
     <section id="search" class="mls-search">
         <h2 class="section-title">Find Your Dream Home</h2>
         <div class="search-form">
-            <h3 style="margin-bottom: 1.5rem; text-align: center; color: var(--text-dark);">Search Listings</h3>
+            <h3>Search Listings</h3>
             <form id="mlsForm">
                 <div class="form-grid">
                     <div class="form-group">
@@ -727,6 +744,16 @@
                             <option value="">All Types</option>
                             <option value="residential">Residential</option>
                             <option value="commercial">Commercial</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="sortBy">Sort By</label>
+                        <select id="sortBy" name="sortBy">
+                            <option value="">Select</option>
+                            <option value="newest">Newest</option>
+                            <option value="oldest">Oldest</option>
+                            <option value="pra">Least Expensive to Most</option>
+                            <option value="prd">Most Expensive to Least</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -797,7 +824,7 @@
                 <img src="//img1.wsimg.com/isteam/stock/771/:/cr=t:5.36%25,l:1.76%25,w:96.47%25,h:89.29%25/rs=w:600,h:600,cg:true,m" alt="Gallery Image 3">
             </div>
             <div class="gallery-item">
-                <img src="//img1.wsimg.com/isteam/ip/067a4d42-19e8-46d9-9bed-578bf62dd44e/photo-5db79f9.jpg/:/cr=t:14.65%25,l:0%25,w:100%25,h:66.64%25/rs=w:600,h:600,cg:true" alt="Gallery Image 4">
+                <img src="//img1.wsimg.com/isteam/ip/067a4d42-19e8-46d9-9bed-578bf62dd44e/photo-5db79f9.jpg/:/rs=w:600,h:600,cg:true" alt="Gallery Image 4">
             </div>
         </div>
     </section>
@@ -805,28 +832,22 @@
     <!-- Services Section -->
     <section id="services" class="about">
         <h2 class="section-title">Our Services</h2>
-        <div class="services-grid">
-            <div class="service-card">
-                <img src="//img1.wsimg.com/isteam/stock/12792/:/rs=w:365,h:365,cg:true,m/cr=w:365,h:365" alt="Real Estate Services">
-                <div class="service-content">
-                    <h3>Real Estate Done Right</h3>
-                    <h3 style="font-size: 1.2rem; color: #666; margin-top: 0.5rem;">Commercial & Residential</h3>
-                    <p>Nervous about your property adventure? Don't be. Whether you're getting ready to buy or sell your residence, looking at investment properties, or just curious about the markets, our team ensures you get the best experience possible!</p>
-                </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <img src="//img1.wsimg.com/isteam/stock/12792/:/rs=w:365,h:250,cg:true,m/cr=w:365,h:250" alt="Real Estate Services">
+                <h3>Real Estate Done Right</h3>
+                <h4 style="font-size: 1rem; color: #666; margin: 0.5rem 0; font-weight: normal;">Commercial & Residential</h4>
+                <p>Nervous about your property adventure? Don't be. Whether you're getting ready to buy or sell your residence, looking at investment properties, or just curious about the markets, our team ensures you get the best experience possible!</p>
             </div>
-            <div class="service-card">
-                <img src="//img1.wsimg.com/isteam/stock/43920/:/rs=w:365,h:365,cg:true,m/cr=w:365,h:365" alt="Commercial & Residential">
-                <div class="service-content">
-                    <h3>Commercial & Residential</h3>
-                    <p>Large or small, condo or mansion, we can find it and get at the price that's right. Fixer-uppers? Luxury? We can help with all of it! We live, work, and play in this community. Happy to help you find where to put you hard-earned dollars.</p>
-                </div>
+            <div class="feature-card">
+                <img src="//img1.wsimg.com/isteam/stock/43920/:/rs=w:365,h:250,cg:true,m/cr=w:365,h:250" alt="Commercial & Residential">
+                <h3>Commercial & Residential</h3>
+                <p>Large or small, condo or mansion, we can find it and get at the price that's right. Fixer-uppers? Luxury? We can help with all of it! We live, work, and play in this community. Happy to help you find where to put you hard-earned dollars.</p>
             </div>
-            <div class="service-card">
-                <img src="//img1.wsimg.com/isteam/stock/kayaJdA/:/rs=w:365,h:365,cg:true,m/cr=w:365,h:365" alt="Expertise">
-                <div class="service-content">
-                    <h3>Rely on Expertise</h3>
-                    <p>If you have questions about affordability, credit, and loan options, trust us to connect you with the right people to get the answers you need in a timely fashion. We make sure you feel confident and educated every step of the way.</p>
-                </div>
+            <div class="feature-card">
+                <img src="//img1.wsimg.com/isteam/stock/kayaJdA/:/rs=w:365,h:250,cg:true,m/cr=w:365,h:250" alt="Expertise">
+                <h3>Rely on Expertise</h3>
+                <p>If you have questions about affordability, credit, and loan options, trust us to connect you with the right people to get the answers you need in a timely fashion. We make sure you feel confident and educated every step of the way.</p>
             </div>
         </div>
     </section>
@@ -836,25 +857,25 @@
         <h2 class="section-title">Call or Visit</h2>
         <div class="contact-grid">
             <div class="contact-form">
-                <h3 style="margin-bottom: 1.5rem; font-family: 'Cinzel', serif;">Send Message</h3>
+                <h3>Send Message</h3>
                 <form id="contactForm">
-                    <div class="form-group" style="margin-bottom: 1rem;">
+                    <div class="form-group">
                         <label for="name">Name</label>
                         <input type="text" id="name" name="name" required>
                     </div>
-                    <div class="form-group" style="margin-bottom: 1rem;">
+                    <div class="form-group">
                         <label for="email">Email*</label>
                         <input type="email" id="email" name="email" required>
                     </div>
-                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                    <div class="form-group">
                         <label for="message">Message</label>
-                        <textarea id="message" name="message" rows="4" required style="padding: 0.75rem; border: 2px solid #ddd; border-radius: 5px; font-size: 1rem; font-family: inherit; resize: vertical;"></textarea>
+                        <textarea id="message" name="message" required></textarea>
                     </div>
-                    <button type="submit" class="search-button">Send</button>
+                    <button type="submit" class="submit-button">Send</button>
                     <p style="margin-top: 1rem; font-size: 0.85rem; color: #666; text-align: center;">
                         This site is protected by reCAPTCHA and the Google 
-                        <a href="https://policies.google.com/privacy" target="_blank" style="color: var(--primary-color);">Privacy Policy</a> and 
-                        <a href="https://policies.google.com/terms" target="_blank" style="color: var(--primary-color);">Terms of Service</a> apply.
+                        <a href="https://policies.google.com/privacy" target="_blank" style="color: #8f6e6e;">Privacy Policy</a> and 
+                        <a href="https://policies.google.com/terms" target="_blank" style="color: #8f6e6e;">Terms of Service</a> apply.
                     </p>
                 </form>
             </div>
@@ -876,32 +897,30 @@
 
     <!-- Footer -->
     <footer>
-        <div class="footer-content">
-            <div class="social-links">
-                <a href="https://www.facebook.com/MarciHomes/" target="_blank" aria-label="Facebook">
-                    <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M20 12.047C20 7.603 16.418 4 12 4s-8 3.603-8 8.047c0 4.017 2.925 7.346 6.75 7.95v-5.624H8.719v-2.326h2.031v-1.773c0-2.017 1.194-3.13 3.022-3.13.875 0 1.79.157 1.79.157v1.98h-1.008c-.994 0-1.304.62-1.304 1.257v1.51h2.219l-.355 2.325H13.25v5.624c3.825-.604 6.75-3.933 6.75-7.95z"/>
-                    </svg>
-                </a>
-                <a href="https://www.instagram.com/marciandlauren_nvrealtors/" target="_blank" aria-label="Instagram">
-                    <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M14.667 12a2.57 2.57 0 0 0-.782-1.885A2.57 2.57 0 0 0 12 9.333a2.57 2.57 0 0 0-1.885.782A2.57 2.57 0 0 0 9.333 12c0 .736.26 1.365.782 1.885.52.521 1.149.782 1.885.782a2.57 2.57 0 0 0 1.885-.782c.521-.52.782-1.149.782-1.885zm1.437 0c0 1.139-.4 2.108-1.198 2.906-.798.799-1.767 1.198-2.906 1.198-1.139 0-2.108-.4-2.906-1.198-.799-.798-1.198-1.767-1.198-2.906 0-1.139.4-2.108 1.198-2.906.798-.799 1.767-1.198 2.906-1.198 1.139 0 2.108.4 2.906 1.198.799.798 1.198 1.767 1.198 2.906zm1.125-4.27c0 .263-.094.489-.281.676a.923.923 0 0 1-.677.282.923.923 0 0 1-.677-.282.923.923 0 0 1-.281-.677c0-.264.093-.49.28-.677a.923.923 0 0 1 .678-.281c.264 0 .49.094.677.281a.923.923 0 0 1 .281.677zM12 5.437l-.797-.006a56.514 56.514 0 0 0-1.099 0c-.25.004-.585.014-1.005.032-.42.017-.778.052-1.073.104a4.177 4.177 0 0 0-.745.192c-.347.14-.653.34-.916.605-.264.263-.466.569-.605.916-.076.202-.14.45-.192.745a8.255 8.255 0 0 0-.104 1.073c-.018.42-.028.755-.032 1.005-.003.25-.003.616 0 1.1l.006.796-.006.797c-.003.483-.003.849 0 1.099.004.25.014.585.032 1.005.017.42.052.778.104 1.073.052.295.116.543.192.745.14.347.34.653.605.916.263.264.569.466.916.605.202.076.45.14.745.192.295.052.653.087 1.073.104.42.018.755.028 1.005.032.25.003.616.003 1.1 0l.796-.005.797.005c.483.003.849.003 1.099 0 .25-.004.585-.014 1.005-.032.42-.017.778-.052 1.073-.104.295-.052.543-.116.745-.192.347-.14.653-.34.916-.605.264-.263.466-.569.605-.916.076-.202.14-.45.192-.745.052-.295.087-.653.104-1.073.018-.42.028-.755.032-1.005.003-.25.003-.616 0-1.1L18.562 12l.006-.797c.003-.483.003-.849 0-1.099a38.59 38.59 0 0 0-.032-1.005 8.255 8.255 0 0 0-.104-1.073 4.177 4.177 0 0 0-.192-.745 2.703 2.703 0 0 0-.605-.916 2.703 2.703 0 0 0-.916-.605 4.177 4.177 0 0 0-.745-.192 8.255 8.255 0 0 0-1.073-.104c-.42-.018-.755-.028-1.005-.032-.25-.003-.616-.003-1.1 0L12 5.438zM20 12c0 1.59-.017 2.691-.052 3.302-.07 1.445-.5 2.563-1.292 3.354-.791.792-1.91 1.222-3.354 1.292-.611.035-1.712.052-3.302.052s-2.691-.017-3.302-.052c-1.445-.07-2.563-.5-3.354-1.292-.792-.791-1.222-1.91-1.292-3.354C4.017 14.691 4 13.59 4 12s.017-2.691.052-3.302c.07-1.445.5-2.563 1.292-3.354.791-.792 1.91-1.222 3.354-1.292C9.309 4.017 10.41 4 12 4s2.691.017 3.302.052c1.445.07 2.563.5 3.354 1.292.792.791 1.222 1.91 1.292 3.354.035.611.052 1.712.052 3.302z"/>
-                    </svg>
-                </a>
-                <a href="https://www.linkedin.com/in/marci-metzger-30642496/" target="_blank" aria-label="LinkedIn">
-                    <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M5.181 4h13.634C19.468 4 20 4.518 20 5.153v13.692c0 .638-.532 1.155-1.184 1.155H5.181C4.53 20 4 19.483 4 18.845V5.153c0-.636.53-1.152 1.181-1.152zm3.754 3.574a1.376 1.376 0 00-2.752 0A1.38 1.38 0 007.56 8.95c.758 0 1.375-.618 1.375-1.376zM8.75 9.998H6.372v7.635H8.75V9.999zm1.485 0h.003v7.633h2.371v-3.777c0-.995.19-1.96 1.425-1.96 1.217 0 1.233 1.14 1.233 2.025v3.714h2.372v-4.188c0-2.056-.444-3.637-2.847-3.637-1.159 0-1.933.633-2.25 1.233h-.031V9.999h-2.273v-.002l-.003.002z"/>
-                    </svg>
-                </a>
-                <a href="https://www.yelp.com/biz/xr3yQN_m2SgO0R_7S6p62w" target="_blank" aria-label="Yelp">
-                    <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M9.988 14.158c-.037.01-3.983 1.134-4.224 1.134-.554-.029-.674-.515-.726-.99a6.35 6.35 0 0 1 .011-1.487c.07-.596.201-1.431.883-1.396.175 0 2.447.822 4.11 1.41.624.215.679 1.136-.054 1.33zm2.112-3.616c.065 1.213-.93 1.54-1.722.454L6.501 5.663c-.055-.21.011-.394.193-.553.57-.523 3.626-1.263 4.432-1.082.273.06.441.194.503.4.048.263.42 5.314.47 6.114zm-.051 5.232c0 .146.007 3.696-.062 3.857-.084.19-.256.308-.522.356-.368.054-.988-.06-1.86-.34-.803-.257-2.068-.682-1.798-1.349.102-.219 1.874-1.994 2.82-2.971.437-.483 1.45-.175 1.422.447zm6.572-3.74c-.204.118-4.041.896-4.307.972l.01-.02c-.66.15-1.29-.586-.85-1.098.136-.117 2.404-2.933 2.656-3.08.19-.113.412-.12.667-.018.671.28 2.01 2.003 2.094 2.686-.004.092.044.371-.27.558zm.368 4.15c-.098.654-1.623 2.33-2.327 2.571-.251.083-.47.064-.645-.063-.183-.111-2.254-3.083-2.367-3.248-.398-.514.248-1.263.933-1.054 0 0 4.03 1.133 4.184 1.25.19.131.262.312.222.544z"/>
-                    </svg>
-                </a>
-            </div>
-            <div class="footer-bottom">
-                <p>Copyright © 2023 Marci METZGER Homes - All Rights Reserved</p>
-            </div>
+        <div class="social-links">
+            <a href="https://www.facebook.com/MarciHomes/" target="_blank" aria-label="Facebook">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M20 12.047C20 7.603 16.418 4 12 4s-8 3.603-8 8.047c0 4.017 2.925 7.346 6.75 7.95v-5.624H8.719v-2.326h2.031v-1.773c0-2.017 1.194-3.13 3.022-3.13.875 0 1.79.157 1.79.157v1.98h-1.008c-.994 0-1.304.62-1.304 1.257v1.51h2.219l-.355 2.325H13.25v5.624c3.825-.604 6.75-3.933 6.75-7.95z"/>
+                </svg>
+            </a>
+            <a href="https://www.instagram.com/marciandlauren_nvrealtors/" target="_blank" aria-label="Instagram">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M14.667 12a2.57 2.57 0 0 0-.782-1.885A2.57 2.57 0 0 0 12 9.333a2.57 2.57 0 0 0-1.885.782A2.57 2.57 0 0 0 9.333 12c0 .736.26 1.365.782 1.885.52.521 1.149.782 1.885.782a2.57 2.57 0 0 0 1.885-.782c.521-.52.782-1.149.782-1.885zm1.437 0c0 1.139-.4 2.108-1.198 2.906-.798.799-1.767 1.198-2.906 1.198-1.139 0-2.108-.4-2.906-1.198-.799-.798-1.198-1.767-1.198-2.906 0-1.139.4-2.108 1.198-2.906.798-.799 1.767-1.198 2.906-1.198 1.139 0 2.108.4 2.906 1.198.799.798 1.198 1.767 1.198 2.906zm1.125-4.27c0 .263-.094.489-.281.676a.923.923 0 0 1-.677.282.923.923 0 0 1-.677-.282.923.923 0 0 1-.281-.677c0-.264.093-.49.28-.677a.923.923 0 0 1 .678-.281c.264 0 .49.094.677.281a.923.923 0 0 1 .281.677zM12 5.437l-.797-.006a56.514 56.514 0 0 0-1.099 0c-.25.004-.585.014-1.005.032-.42.017-.778.052-1.073.104a4.177 4.177 0 0 0-.745.192c-.347.14-.653.34-.916.605-.264.263-.466.569-.605.916-.076.202-.14.45-.192.745a8.255 8.255 0 0 0-.104 1.073c-.018.42-.028.755-.032 1.005-.003.25-.003.616 0 1.1l.006.796-.006.797c-.003.483-.003.849 0 1.099.004.25.014.585.032 1.005.017.42.052.778.104 1.073.052.295.116.543.192.745.14.347.34.653.605.916.263.264.569.466.916.605.202.076.45.14.745.192.295.052.653.087 1.073.104.42.018.755.028 1.005.032.25.003.616.003 1.1 0l.796-.005.797.005c.483.003.849.003 1.099 0 .25-.004.585-.014 1.005-.032.42-.017.778-.052 1.073-.104.295-.052.543-.116.745-.192.347-.14.653-.34.916-.605.264-.263.466-.569.605-.916.076-.202.14-.45.192-.745.052-.295.087-.653.104-1.073.018-.42.028-.755.032-1.005.003-.25.003-.616 0-1.1L18.562 12l.006-.797c.003-.483.003-.849 0-1.099a38.59 38.59 0 0 0-.032-1.005 8.255 8.255 0 0 0-.104-1.073 4.177 4.177 0 0 0-.192-.745 2.703 2.703 0 0 0-.605-.916 2.703 2.703 0 0 0-.916-.605 4.177 4.177 0 0 0-.745-.192 8.255 8.255 0 0 0-1.073-.104c-.42-.018-.755-.028-1.005-.032-.25-.003-.616-.003-1.1 0L12 5.438zM20 12c0 1.59-.017 2.691-.052 3.302-.07 1.445-.5 2.563-1.292 3.354-.791.792-1.91 1.222-3.354 1.292-.611.035-1.712.052-3.302.052s-2.691-.017-3.302-.052c-1.445-.07-2.563-.5-3.354-1.292-.792-.791-1.222-1.91-1.292-3.354C4.017 14.691 4 13.59 4 12s.017-2.691.052-3.302c.07-1.445.5-2.563 1.292-3.354.791-.792 1.91-1.222 3.354-1.292C9.309 4.017 10.41 4 12 4s2.691.017 3.302.052c1.445.07 2.563.5 3.354 1.292.792.791 1.222 1.91 1.292 3.354.035.611.052 1.712.052 3.302z"/>
+                </svg>
+            </a>
+            <a href="https://www.linkedin.com/in/marci-metzger-30642496/" target="_blank" aria-label="LinkedIn">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M5.181 4h13.634C19.468 4 20 4.518 20 5.153v13.692c0 .638-.532 1.155-1.184 1.155H5.181C4.53 20 4 19.483 4 18.845V5.153c0-.636.53-1.152 1.181-1.152zm3.754 3.574a1.376 1.376 0 00-2.752 0A1.38 1.38 0 007.56 8.95c.758 0 1.375-.618 1.375-1.376zM8.75 9.998H6.372v7.635H8.75V9.999zm1.485 0h.003v7.633h2.371v-3.777c0-.995.19-1.96 1.425-1.96 1.217 0 1.233 1.14 1.233 2.025v3.714h2.372v-4.188c0-2.056-.444-3.637-2.847-3.637-1.159 0-1.933.633-2.25 1.233h-.031V9.999h-2.273v-.002l-.003.002z"/>
+                </svg>
+            </a>
+            <a href="https://www.yelp.com/biz/xr3yQN_m2SgO0R_7S6p62w" target="_blank" aria-label="Yelp">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M9.988 14.158c-.037.01-3.983 1.134-4.224 1.134-.554-.029-.674-.515-.726-.99a6.35 6.35 0 0 1 .011-1.487c.07-.596.201-1.431.883-1.396.175 0 2.447.822 4.11 1.41.624.215.679 1.136-.054 1.33zm2.112-3.616c.065 1.213-.93 1.54-1.722.454L6.501 5.663c-.055-.21.011-.394.193-.553.57-.523 3.626-1.263 4.432-1.082.273.06.441.194.503.4.048.263.42 5.314.47 6.114zm-.051 5.232c0 .146.007 3.696-.062 3.857-.084.19-.256.308-.522.356-.368.054-.988-.06-1.86-.34-.803-.257-2.068-.682-1.798-1.349.102-.219 1.874-1.994 2.82-2.971.437-.483 1.45-.175 1.422.447zm6.572-3.74c-.204.118-4.041.896-4.307.972l.01-.02c-.66.15-1.29-.586-.85-1.098.136-.117 2.404-2.933 2.656-3.08.19-.113.412-.12.667-.018.671.28 2.01 2.003 2.094 2.686-.004.092.044.371-.27.558zm.368 4.15c-.098.654-1.623 2.33-2.327 2.571-.251.083-.47.064-.645-.063-.183-.111-2.254-3.083-2.367-3.248-.398-.514.248-1.263.933-1.054 0 0 4.03 1.133 4.184 1.25.19.131.262.312.222.544z"/>
+                </svg>
+            </a>
+        </div>
+        <div class="footer-bottom">
+            <p>Copyright © 2023 Marci METZGER Homes - All Rights Reserved</p>
         </div>
     </footer>
 
@@ -919,16 +938,6 @@
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
             });
-        });
-
-        // Navbar scroll effect
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
         });
 
         // Smooth scroll for anchor links
@@ -955,29 +964,6 @@
             e.preventDefault();
             alert('Thank you for your message! We will get back to you soon.');
             e.target.reset();
-        });
-
-        // Fade in animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Observe all cards and sections
-        document.querySelectorAll('.about-card, .service-card, .gallery-item').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(el);
         });
     </script>
 
